@@ -1,0 +1,198 @@
+Install ElasticSearch:
+
+Install at: /usr/share/elasticsearch
+Config File at : /etc/elasticsearch/
+Init Script at: /etc/init.d/elasticsearch/
+
+Start/STOP: sudo systemctl enable elasticsearch.service
+sudo service elasticsearch start
+sudo service elasticsearch stop
+curl -XGET http://localhost:9200
+
+
+
+http://www.elasticsearchtutorial.com/elasticsearch-in-5-minutes.html
+
+
+http://www.elasticsearchtutorial.com/basic-elasticsearch-concepts.html
+
+
+http://localhost:9200/blog/_search?pretty=true" -d 
+
+
+
+
+Index: Database
+TYPE/Mapping===> Table
+Document ==>ROW 
+Field ==>Columns
+Mapping ==>Schema 
+
+
+http://localhost:9200/schools
+Method: put (Create Index)
+
+Index
+|
+|
+Type
+|
+|
+Document
+GET:
+
+curl -XGET localhost:9200/classes/class/1
+
+curl -XPOST localhost:9200/classes/class/1 -d '{XXxx}'
+
+curl -XPUT localhost:9200/classes/class/1 -d '{xxx}'
+
+curl -XDELETE locahost:9200/classes/class/1
+
+
+classes?pretty ==>Looks and Feel Good in CURL CMD
+
+
+#######################################
+creating Index: USE PUT
+
+PUT
+localhost:9200/classes
+OUTPUT: 
+{
+"acknowledged": true,
+"shards_acknowledged": true,
+"index": "classes"
+}
+#######################################
+Check the Index : Then Use GET
+GET: localhost:9200/classes
+OUTPUT: 
+{
+"classes": {
+"aliases": { },
+"mappings": { },
+"settings": {
+"index": {
+"creation_date": "1542735535095",
+"number_of_shards": "5",
+"number_of_replicas": "1",
+"uuid": "EbCLe3CxToCfp0WwBNvUbQ",
+"version": {
+"created": "6000099"
+},
+"provided_name": "classes"
+}
+}
+}
+}
+##############################################################################
+POST:
+localhost:9200/classes/ds/1
+Here classes : Index(Database)
+       ds: type(Table)
+	   1 :Row
+	   Request BODY :
+	     {
+		 "title","Hello welcome",
+		 "name","Hadoop Opes"
+		 }
+Response:
+{
+"_index": "classes",
+"_type": "ds",
+"_id": "15",
+"_version": 1,
+"result": "created",
+"_shards": {
+"total": 2,
+"successful": 1,
+"failed": 0
+},
+"_seq_no": 1,
+"_primary_term": 1
+}
+
+		 
+##############################################################################
+POST:
+Updated New Record:
+localhost:9200/classes/ds/1
+Updated Example:
+"_index": "classes",
+"_type": "ds",
+"_id": "13",
+"_version": 2,
+"result": "updated",
+"_shards": {
+"total": 2,
+"successful": 1,
+"failed": 0
+},
+"_seq_no": 3,
+"_primary_term": 1
+}		 
+##############################################################################
+
+Document From File
+
+POST: localhost:9200/classes/class/1/ -d @Oneclass.json
+
+##############################################################################
+
+GET the entire Database
+GET :
+localhost:9200/classes 
+
+UPDATE:
+
+localhost:9200/schools/1/_update
+
+
+
+
+PUT Command :
+/twitter
+
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 3, 
+            "number_of_replicas" : 2 
+        }
+    }
+}
+
+
+
+GET Command:
+/twitter
+
+POST :
+/anji/_doc/1
+{
+    "counter" : 1,
+    "tags" : ["red"],
+    "counter1" : 1,
+    "counter2" : 2,
+    "counter3" : 3
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
